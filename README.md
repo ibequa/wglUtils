@@ -11,13 +11,19 @@ var utils = wglUtils.glUtils(canvas),
 
 ### Shaders
 * *Loading from DOM*
-`var vs = utils.shader().fromDOM('shader-vs');`
+```javascript 
+var vs = utils.shader().fromDOM('shader-vs');
+```
 * *Loading from source string*
-`var fs = utils.shader().fromSource(str, gl.FRAGMENT_SHADER);`
+```javascript
+var fs = utils.shader().fromSource(str, gl.FRAGMENT_SHADER);
+```
 
 ### WebGLProgram
 * *Creating a program*
-`var mainProgram = utils.program([vs, fs]);`
+```javascript
+var mainProgram = utils.program([vs, fs]);
+```
 * *Setting uniforms*
 `
 mainProgram.use();
