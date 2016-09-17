@@ -31,8 +31,8 @@ mainProgram.uniforms
     .set('u_model', model)                // model is {Number[]}
      .set('u_projection', projection)     // projection is {Number[]}
      .set('u_view', view)                 // view is {Number[]}
-      .set('u_sampler', 0);
-      .set('u_sampler1', 1);
+     .set('u_sampler', 0);
+     .set('u_sampler1', 1);
 ```
 
 ### Buffers
@@ -47,7 +47,7 @@ vbo.attribPointer(mainProgram, 'aVertexPosition', 5 , 0)
 ```
 
 ### Textures
-* **Creating a texture**
+* *Creating a texture*
 ```javascript
 var tex = utils.texture(gl.TEXTURE_2D, false, gl.NEAREST, gl.NEAREST, gl.REPEAT);
 ```
@@ -59,7 +59,7 @@ tex.imageFromRaw(gl.TEXTURE_2D, pixelsImageCanvasOrVideo, gl.RGB, gl.UNSIGNED_BY
 ```javascript
 tex.imageFromSrc(gl.TEXTURE_2D, 'mytexture.png', gl.RGBA, gl.UNSIGNED_BYTE, textureDownloadFinishedCallback);
 ```
-* *Multitextuing*
+* *Multitexturing*
 ```javascript
 // render loop
 tex.bind(mainProgram, 'u_sampler');
