@@ -26,22 +26,27 @@ var mainProgram = utils.program([vs, fs]);
 ```
 * *Setting uniforms*
 ```javascript
+var model = [/*array representing a model matrix */],
+    view = [/*array representing a view matrix */],
+    projection = [/*array representing a projection matrix */];
 mainProgram.use();
 mainProgram.uniforms
-    .set('u_model', model)                // model is {Number[]}
-     .set('u_projection', projection)     // projection is {Number[]}
-     .set('u_view', view)                 // view is {Number[]}
-     .set('u_sampler', 0);
-     .set('u_sampler1', 1);
+    .set('u_model', model)
+    .set('u_projection', projection)
+    .set('u_view', view)
+    .set('u_sampler', 0);
+    .set('u_sampler1', 1);
 ```
 
 ### Buffers
 * *Creating a buffer*
 ```javascript
-var vbo = utils.buffer(gl.ARRAY_BUFFER, vertices, Float32Array, gl.DYNAMIC_DRAW);
+var vertices = [/* pos */ 0.0, 0.0, 0.0, /* uv */ 0.0, 0.0, /* pos */ 1.0, 0.0, 0.0, ...],
+    vbo = utils.buffer(gl.ARRAY_BUFFER, vertices, Float32Array, gl.DYNAMIC_DRAW);
 ```
 * *Assigning vertex attributes*
 ```javascript
+// offset and stride is specified per point
 vbo.attribPointer(mainProgram, 'aVertexPosition', 5 , 0)
     .attribPointer(mainProgram, 'aUV', 5, 3);
 ```
@@ -49,7 +54,7 @@ vbo.attribPointer(mainProgram, 'aVertexPosition', 5 , 0)
 ### Textures
 * *Creating a texture*
 ```javascript
-var tex = utils.texture(gl.TEXTURE_2D, false, gl.NEAREST, gl.NEAREST, gl.REPEAT);
+var tex = utils.texture(gl.TEXTURE_2D, /* no mipmap */ false, gl.NEAREST, gl.NEAREST, gl.REPEAT);
 ```
 * *Filling a texture #1*
 ```javascript
@@ -64,4 +69,5 @@ tex.imageFromSrc(gl.TEXTURE_2D, 'mytexture.png', gl.RGBA, gl.UNSIGNED_BYTE, text
 // render loop
 tex.bind(mainProgram, 'u_sampler');
 tex1.bind(mainProgram, 'u_sampler1');
+// no need for gl.activeTexture();
 ```
