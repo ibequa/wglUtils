@@ -3,6 +3,7 @@ WebGL helper library for boilerplate code.
 
 ## Initializing
 Request WebGL context with depth and stencil buffers.
+
 `    var utils = wglUtils.glUtils(canvas),
         gl = utils.glContext;   // get raw [WebGLRenderingContext]
 `
