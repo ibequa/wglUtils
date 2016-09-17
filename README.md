@@ -1,5 +1,5 @@
 # wglUtils
-WebGL helper library for boilerplate code.
+WebGL helper library that makes low-level GL code less verbose yet imposes minimal abstractions upon it.
 
 ### Initializing
 Request WebGL context with depth and stencil buffers.
